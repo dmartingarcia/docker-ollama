@@ -79,6 +79,55 @@ The setup includes:
 - Health checks for reliability
 - Traefik labels for reverse proxy setup
 
+## 🖥️ NVIDIA GPU Setup
+
+To enable GPU support for your Docker containers, you need to install the NVIDIA Container Toolkit. Follow these steps:
+
+### Install NVIDIA Container Toolkit
+
+[Here's the latest version of the Nvidia documentation.](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/sample-workload.html)
+
+1. Set up the package repository and the GPG key:
+    ```bash
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+    curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    sudo apt-get update
+    ```
+
+2. Install the NVIDIA Container Toolkit:
+    ```bash
+    sudo apt-get install -y nvidia-docker2
+    sudo systemctl restart docker
+    ```
+
+### Run Containers with GPU Access
+
+To run your Docker containers with GPU access and the CUDA environment, use the `--gpus` flag:
+
+```bash
+docker run --gpus all nvidia/cuda:11.0-base nvidia-smi
+```
+
+In your `docker-compose.yml`, ensure you have the following configuration for services requiring GPU access:
+
+```yaml
+services:
+  ollama:
+    image: ollama/ollama:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+```
+
+This configuration ensures that the Ollama service has access to the GPU and the necessary CUDA environment.
+
 ## 🔒 Security Note
 
 Remember to change the default credentials after your first login to the Web UI for security purposes.
