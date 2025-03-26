@@ -40,5 +40,8 @@ list-models: up
 	docker exec -it ollama ollama list
 
 run: ## Prepare and start all services
-run: up
+run: up rebuild-model
+
+rebuild-model: ## Rebuild the custom model
+	docker exec -it ollama ollama rm custom || true
 	docker exec -it ollama ollama create custom -f /app/Modelfile
