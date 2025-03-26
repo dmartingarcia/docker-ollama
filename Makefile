@@ -13,7 +13,7 @@ help:
 
 # Start all services
 up: ## Start all services
-	@if [ ! -f .env ]; then cp .env-example .env; fi
+	@if [ ! -f .env ]; then cp .env.example .env; fi
 	@export $(shell sed 's/=.*//' .env)
 	$(DOCKER_COMPOSE) up -d
 

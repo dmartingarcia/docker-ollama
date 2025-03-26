@@ -40,6 +40,8 @@ cd docker-ollama
 make up
 ```
 
+It will pull the R1 model by default, but you can change it on the Makefile to any other model
+
 2. Access the Web UI at `http://localhost:8080`
 
 ## 📦 Available Make Commands
