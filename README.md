@@ -38,7 +38,7 @@ cd docker-ollama
 
 1. Start the services:
 ```bash
-make up
+make run
 ```
 
 It will pull the R1 model by default, but you can change it on the Makefile to any other model
