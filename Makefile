@@ -35,6 +35,10 @@ status: ## Check status of services
 pull: ## Pull latest images
 	$(DOCKER_COMPOSE) pull
 
+list-models: ## List all models
+list-models: up
+	docker exec -it ollama ollama list
+
 run: ## Prepare and start all services
 run: up
 	docker exec -it ollama ollama pull deepseek-r1

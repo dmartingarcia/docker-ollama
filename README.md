@@ -46,6 +46,9 @@ It will pull the R1 model by default, but you can change it on the Makefile to a
 
 ## 📦 Available Make Commands
 
+Show available commands
+- `make list-models` - List all models
+- `make run` - Prepare and start all services
 - `make help` - Show available commands
 - `make up` - Start all services
 - `make down` - Stop all services
