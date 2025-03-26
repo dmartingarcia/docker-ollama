@@ -11,12 +11,13 @@ This project provides a Docker setup for running Ollama AI locally with an intui
 
 ## 🚀 Features
 
-- Ollama AI model server with GPU support
-- Open WebUI for easy interaction with models
+- [Ollama AI](https://github.com/ollama/ollama) model server with GPU support
+- [Open WebUI](https://github.com/open-webui/open-webui) for easy interaction with models
 - Persistent storage for models and configurations
 - Health checking and automatic restart
 - Traefik integration for reverse proxy support
 - Makefile for easy management
+- Easily customizable using the Modelfile
 
 ## 📋 Prerequisites
 

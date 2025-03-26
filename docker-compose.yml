@@ -4,6 +4,7 @@ services:
     image: ollama/ollama:latest
     volumes:
       - ./config/ollama:/root/.ollama
+      - ./Modelfile:/app/Modelfile
     deploy:
       resources:
         reservations:

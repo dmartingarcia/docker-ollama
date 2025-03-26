@@ -41,4 +41,4 @@ list-models: up
 
 run: ## Prepare and start all services
 run: up
-	docker exec -it ollama ollama pull deepseek-r1
+	docker exec -it ollama ollama create custom -f /app/Modelfile
